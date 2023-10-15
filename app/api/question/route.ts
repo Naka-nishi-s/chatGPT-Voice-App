@@ -14,7 +14,10 @@ export async function POST(request: NextRequest) {
   try {
     const gptResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: requestData.text }],
+      messages: [
+        { role: "system", content: "あなたは質問に対する解答を返してくれるAIです。" },
+        { role: "user", content: requestData.text }
+      ],
     });
 
     const gptResponseText = gptResponse.choices[0].message.content;
