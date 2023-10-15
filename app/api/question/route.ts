@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         { role: "system", content: "あなたは質問に対する解答を返してくれるAIです。" },
         { role: "user", content: requestData.text }
       ],
-      max_tokens: 100
+      max_tokens: 1000
     });
 
     const gptResponseText = gptResponse.choices[0].message.content;
