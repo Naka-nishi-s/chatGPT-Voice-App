@@ -13,7 +13,7 @@ export const WarnTooltip = () => {
             返答に10秒以上かかると、エラーになります。
           </Typography>
           <Typography>
-            「簡潔に答えて」など、chatGPTが簡潔に質問を返すようにしてみてください。
+            「一言で答えて」など、chatGPTが簡潔に質問を返すようにしてみてください。
           </Typography>
         </>
       }
