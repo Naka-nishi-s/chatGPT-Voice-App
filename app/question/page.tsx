@@ -95,7 +95,7 @@ export default function Question() {
       const answerJson = await answer.json();
       setContent(answerJson.text);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
       console.log("Node側への接続中にエラーが起こりました。");
       setContent("");
     } finally {
