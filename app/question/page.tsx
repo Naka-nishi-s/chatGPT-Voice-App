@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ContentDisplay from "../_components/ContentDisplay";
+import { WarnTooltip } from "../_components/WarnTooltip";
 
 export default function Question() {
   // recognition
@@ -95,7 +96,6 @@ export default function Question() {
       const answerJson = await answer.json();
       setContent(answerJson.text);
     } catch (e) {
-      console.log(e.message);
       console.log("Node側への接続中にエラーが起こりました。");
       setContent("");
     } finally {
@@ -132,7 +132,8 @@ export default function Question() {
     <Grid container spacing={4} sx={{ height: "100vh", p: 3 }}>
       <Grid
         item
-        xs={6}
+        xs={12}
+        md={6}
         container
         direction="column"
         alignItems="center"
@@ -141,7 +142,10 @@ export default function Question() {
       >
         <Grid item>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Typography variant="h4">音声で質問する</Typography>
+            <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+              <Typography variant="h4">音声で質問する</Typography>
+              <WarnTooltip />
+            </Box>
             <Button
               startIcon={<MicIcon />}
               onClick={handleListen}
@@ -154,7 +158,10 @@ export default function Question() {
 
         <Grid item>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Typography variant="h4">テキストで質問する</Typography>
+            <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+              <Typography variant="h4">文章で質問する</Typography>
+              <WarnTooltip />
+            </Box>
             <form onSubmit={handleSubmit}>
               <Stack direction="row" spacing={2}>
                 <TextField
@@ -177,7 +184,14 @@ export default function Question() {
         </Grid>
       </Grid>
 
-      <Grid item xs={6} container alignItems="center" justifyContent="center">
+      <Grid
+        item
+        xs={12}
+        md={6}
+        container
+        alignItems="center"
+        justifyContent="center"
+      >
         <Box
           sx={{
             display: "flex",
@@ -198,7 +212,9 @@ export default function Question() {
           {isLoading ? (
             <CircularProgress sx={{ mt: 2 }} />
           ) : (
-            <ContentDisplay content={content ? content : "質問をしてみよう！"} />
+            <ContentDisplay
+              content={content ? content : "質問をしてみよう！"}
+            />
           )}
         </Box>
       </Grid>
