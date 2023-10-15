@@ -21,6 +21,9 @@ export async function POST(request: NextRequest) {
     });
 
     const gptResponseText = gptResponse.choices[0].message.content;
+
+    console.log(gptResponseText)
+
     return NextResponse.json({ text: gptResponseText });
   } catch (error) {
     return NextResponse.json({ text: "Error querying GPT-3.5" });

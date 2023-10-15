@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ContentDisplay from "../_components/ContentDisplay";
 
 export default function Question() {
   // recognition
@@ -94,6 +95,7 @@ export default function Question() {
       const answerJson = await answer.json();
       setContent(answerJson.text);
     } catch (e) {
+      console.log(e);
       console.log("Node側への接続中にエラーが起こりました。");
       setContent("");
     } finally {
@@ -196,9 +198,7 @@ export default function Question() {
           {isLoading ? (
             <CircularProgress sx={{ mt: 2 }} />
           ) : (
-            <Typography sx={{ mt: 2 }}>
-              {content ? content : "質問をしてみよう！"}
-            </Typography>
+            <ContentDisplay content={content ? content : "質問をしてみよう！"} />
           )}
         </Box>
       </Grid>
