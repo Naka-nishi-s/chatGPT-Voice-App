@@ -1,6 +1,6 @@
 ## GPT-Voice-App
 
-chatGPT をテキスト or 音声で操作できるようにする
+chatGPT をテキスト or 音声で操作できるアプリ
 
 ## 画面説明
 
